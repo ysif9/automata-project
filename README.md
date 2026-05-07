@@ -17,7 +17,7 @@ This repository is for a group automata project covering both theoretical and pr
 ## Tech Stack
 
 - Java 17
-- JavaFX (for the UI)
+- JavaFX (GUI)
 - Maven
 - JUnit 5
 
