@@ -1,5 +1,7 @@
 package pda;
 
+import java.util.Stack;
+
 /**
  * Validates strings against the language {@code L = { a^n b^n | n >= 0 }}.
  *
@@ -25,12 +27,12 @@ public final class AnBnPda {
             return false;
         }
 
-        int balance = 0;
+        Stack<Character> stack = new Stack<>();
         int i = 0;
 
         // q0: read a's and push one marker per 'a'
         while (i < input.length() && input.charAt(i) == 'a') {
-            balance++;
+            stack.push('A');
             i++;
         }
 
@@ -39,12 +41,15 @@ public final class AnBnPda {
             if (input.charAt(i) != 'b') {
                 return false;
             }
-            balance--;
-            if (balance < 0) {
+
+            if (stack.isEmpty()) {
                 return false;
             }
+
+            stack.pop();
             i++;
         }
-        return balance == 0;
+
+        return stack.isEmpty();
     }
 }
